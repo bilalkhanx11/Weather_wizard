@@ -23,14 +23,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.json(response);
       }
 
-      // Fetch from OpenWeatherMap API
-      const apiKey = process.env.OPENWEATHER_API_KEY || process.env.WEATHER_API_KEY || "";
-      
-      if (!apiKey) {
-        return res.status(500).json({ 
-          message: "Weather API key not configured. Please set OPENWEATHER_API_KEY environment variable." 
-        });
-      }
+      // Hardcoded OpenWeather API key here:
+      const apiKey = "e7c98e2d596cde84fdefd28ceb46e2fd";
 
       // Fetch current weather
       const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`;
